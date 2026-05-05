@@ -101,9 +101,9 @@ Use the following credentials to test the various Role-Based Access Control inte
 
 | Role | Username | Password |
 | :--- | :--- | :--- |
-| **Admin** | `admin1` | `password` |
-| **Officer** | `officer1` | `password` |
-| **Detective** | `detective1` | `password` |
+| **Admin** | `admin` | `password` |
+| **Officer** | `officer` | `password` |
+| **Detective** | `detective` | `password` |
 
 ---
 *Built as a comprehensive demonstration of Database Management Systems architecture.*
