@@ -15,7 +15,7 @@
 
 ---
 
-## 📌 Project Overview & Features
+## Project Overview & Features
 
 This system provides a digital infrastructure for registering, tracking, and analyzing crime data.
 
@@ -26,7 +26,7 @@ This system provides a digital infrastructure for registering, tracking, and ana
 - **Automated Audit Logging:** Database-level triggers track every state change automatically, ensuring an immutable record for judicial review.
 - **Automated Deployments:** Full Dockerization for seamless one-click setups.
 
-## 🎓 DBMS Concepts Demonstrated
+## DBMS Concepts Demonstrated
 
 This project explicitly focuses on academic and enterprise database architecture concepts:
 
@@ -44,7 +44,7 @@ This project explicitly focuses on academic and enterprise database architecture
 6. **Soft Deletion:** 
    - Implemented `is_deleted` flags to preserve historical data integrity instead of permanent `DELETE` operations.
 
-## 🗄️ Database Schema & ER Diagram
+## Database Schema & ER Diagram
 
 The system is built upon a normalized schema comprising the following core entities:
 `users`, `location`, `victim`, `officer`, `crime_type`, `complaint`, `fir`, `suspects`, `accused`, `case_status`, `case_outcome`, `evidence`, and `audit_log`.
@@ -55,7 +55,7 @@ The system is built upon a normalized schema comprising the following core entit
 - **1 FIR ↔ 1 Case_Status** (1:1 tracking active state)
 - **Many FIRs ↔ 1 Officer / Location / Crime_Type** (N:1)
 
-## 🚀 Setup & Installation
+## Setup & Installation
 
 ### Option 1: Docker (Recommended One-Liner)
 
@@ -95,7 +95,7 @@ This single command will automatically:
    npm run dev
    ```
 
-## 🔑 Test Credentials
+## Test Credentials
 
 Use the following credentials to test the various Role-Based Access Control interfaces. Password for all test accounts is `password`.
 
@@ -104,7 +104,6 @@ Use the following credentials to test the various Role-Based Access Control inte
 | **Admin** | `admin1` | `password` |
 | **Officer** | `officer1` | `password` |
 | **Detective** | `detective1` | `password` |
-| **Judicial** | `judicial1` | `password` |
 
 ---
 *Built as a comprehensive demonstration of Database Management Systems architecture.*
