@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: crime_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: crime_monitoring
+      MYSQL_USER: crime_user
+      MYSQL_PASSWORD: crime_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./sql/triggers.sql:/docker-entrypoint-initdb.d/02_triggers.sql
+      - ./sql/views.sql:/docker-entrypoint-initdb.d/03_views.sql
+      - ./sql/procedures.sql:/docker-entrypoint-initdb.d/04_procedures.sql
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/05_seed.sql
+
+  backend:
+    build: ./backend
+    container_name: crime_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://crime_user:crime_password@db:3306/crime_monitoring
+      - SECRET_KEY=supersecretjwtkeythatshouldbechangedinproduction
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: crime_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
